@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
             recipe.string('name', 100).notNullable().unique();
 
             recipe
-                .interger('dishId')
+                .integer('dishId')
                 .unsigned()
                 .references('id')
                 .inTable('dishes')
@@ -26,7 +26,7 @@ exports.up = function(knex, Promise) {
         })
         .createTable('ingredientsForRecipe', ifr => {
             ifr
-                .interger('recipeId')
+                .integer('recipeId')
                 .unsigned()
                 .references('id')
                 .inTable('recipes')
@@ -34,7 +34,7 @@ exports.up = function(knex, Promise) {
                 .onUpdate('CASCADE');
             
             ifr
-                .interger('ingredientId')
+                .integer('ingredientId')
                 .unsigned()
                 .references('id')
                 .inTable('ingredients')
