@@ -9,5 +9,6 @@ function getRecipes() {
 }
 
 function addRecipe(recipe) {
-
+    return db('recipes')
+        .insert(recipe);
 }
