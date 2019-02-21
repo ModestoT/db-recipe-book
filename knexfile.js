@@ -7,6 +7,11 @@ module.exports = {
     connection: {
       filename: './db/recipes.sqlite3'
     },
+    pool: {
+      afterCreate: (conn, done) => {
+        conn.run('PRAGMA foreign_keys = ON', done);
+      },
+    },
     useNullAsDefault: true, //needed for sqlite
   },
 };
