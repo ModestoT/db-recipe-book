@@ -5,7 +5,9 @@ module.exports = {
     addRecipe
 }
 function getRecipes() {
-    return db('recipes');
+    return db('recipes')
+        .join('dishes', 'dishes.id', 'recipes.dishId')
+        .select('recipes.id', 'recipes.name', 'dishes.name as dish', 'recipes.instructions');
 }
 
 function addRecipe(recipe) {
